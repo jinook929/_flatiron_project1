@@ -55,4 +55,35 @@ class Cli
             self.start
         end
     end
+
+    # Print countries of selected range and receive user input for specific country;
+    # then check if the input is valid and collect the basic data for the country
+    def country_selection(input, pattern)
+        # Get countries basic info via API
+        countries_info = CountryApiScraper.get_counties_info
+        puts "\nWhich country do you want to know about?"
+        # Choose the matching countries info
+        countries = countries_info.select {|info| info[:name].match(pattern)}
+        # Prepare starting index for the selected range
+        starting_index = countries_info.index(countries[0])
+        # Print countries list of the range
+        countries.each.with_index {|country, i| print "#{i+1}. #{country[:name]} | ".colorize(:light_cyan)}
+        print "\n\nEnter the number of your choice => "
+        # Receive user input and convert the index in context of all countries
+        country_index = gets.strip.to_i - 1 + starting_index
+        # Check on the validity of user input
+        if (starting_index..countries.count-1+starting_index).include?(country_index) # When valid
+            # Collect data for instance of the selected country
+            country_code = countries_info[country_index][:code]
+            country_lat = countries_info[country_index][:lat]
+            country_long = countries_info[country_index][:long]
+            # Print country info by invoking print_country method
+            print_country(country_code)
+            # Ask optional question on weather info by invoking ask_weahter method
+            ask_weather(country_lat, country_long)
+        else                                                                      # When not valid
+            # Show countries list in the range and ask user again for the selection
+            print_countries(input)
+        end
+    end
 end
