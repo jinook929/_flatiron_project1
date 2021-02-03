@@ -102,4 +102,27 @@ class Cli
         puts "- Background: \n#{country.background}".colorize(:light_blue)
         puts "\s=> More Info: #{country.url}".colorize(:green)
     end
+
+    # Ask user if weather info needed
+    def ask_weather(lat, long)
+        print "\nDo you want to know the currunt weather of this country? [Capital Area] (Y/N)\s"
+        # Get user input and check if it is valid
+        input = gets.strip
+        if !input.match(/(^[yn]$|^yes$|^no$)/i) # When invalid
+            self.ask_weather(lat, long)
+        else                                    # When valid
+            if input.match(/(^[y]$|^yes$)/i)      # When yes
+                # Get weather info via scraping
+                weather_hash = WeatherScraper.get_weather_info(lat, long)
+                # Instantiate Weather object
+                country_weather = Weather.new(weather_hash)
+                # Print weather info
+                puts "Temperature =  #{country_weather.degree} (#{country_weather.feels_like}) / Wind: #{country_weather.wind}".colorize(:yellow)
+                puts "Daily Low & High =  #{country_weather.low_high} / #{country_weather.description}".colorize(:yellow)
+            else                                  # When no
+                # Ask if user want to continue the app
+                self.another_country?
+            end
+        end            
+    end
 end
