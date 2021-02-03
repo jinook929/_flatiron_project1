@@ -1,10 +1,8 @@
-# Set shebang
+# Set shebang line
 #!/usr/bin/env ruby
 
 # Require environment file
 require_relative('../config/environment')
-# Require all .rb files in lib folder
-Dir['./lib/*.rb'].each {|file| require_relative '../#{file}'}
 
 # Instanctiate Cli class and execute the app by invoking welcome method
 Cli.new.welcome
