@@ -20,4 +20,39 @@ class Cli
         # When finished with one cycle, ask user to continue or to exit
         self.another_country     
     end
+
+    # Show countries list of the selected alphabet range
+    def print_countries(input)
+        case input
+        when /^[1AaBb]/ # When a-b
+            # Create regex pattern for selected alphabet range
+            pattern = /^[AaBb]/
+            # Collect data for selected alphabet range
+            country_selection(input, pattern)
+        when /^[2CcDd]/ # When c-d
+            pattern = /^[CcDd]/
+            country_selection(input, pattern)
+        when /^[3E-Ge-g]/ # When e-g
+            pattern = /^[E-Ge-g]/
+            country_selection(input, pattern)
+        when /^[4H-Kh-k]/ # When h-k
+            pattern = /^[H-Kh-k]/
+            country_selection(input, pattern)
+        when /^[5LlMm]/ # When l-m
+            pattern = /^[LlMm]/
+            country_selection(input, pattern)
+        when /^[6N-Rn-r]/ # When n-r
+            pattern = /^[N-Rn-r]/
+            country_selection(input, pattern)
+        when /^[7SsTt]/ # When s-t
+            pattern = /^[SsTt]/
+            country_selection(input, pattern)
+        when /^[8U-Zu-z]/ # when u-z
+            pattern = /^[U-Zu-z]/
+            country_selection(input, pattern)
+        else # When user input is not valid
+            # Invoke start method again
+            self.start
+        end
+    end
 end
