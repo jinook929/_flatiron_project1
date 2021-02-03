@@ -143,9 +143,11 @@ class Cli
         else                                      # When valid
             if another.match(/(^[y]$|^yes$)/i)      # When yes
                 # Invoke start method
+                puts ""
                 self.start
             else                                    # When no
                 # Invoke exit method
+                puts ""
                 self.exit
             end
         end   
@@ -154,10 +156,10 @@ class Cli
     # Exit the app with message
     def exit
         message = "
-        \n****************************
-        \nThank you for using our app!
-        \n~ ~ ~  See you later.  ~ ~ ~
-        \n****************************\n".colorize(:light_magenta)
+        ****************************\n
+        Thank you for using our app!\n
+        ~ ~ ~  See you later.  ~ ~ ~\n
+        ****************************\n".colorize(:light_magenta)
         abort(message)
     end
 end
