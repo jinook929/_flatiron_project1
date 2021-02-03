@@ -1,4 +1,4 @@
-# Set shebang line
+# Set shebang line for ruby
 #!/usr/bin/env ruby
 
 # Require environment file
