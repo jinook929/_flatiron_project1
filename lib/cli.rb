@@ -157,11 +157,11 @@ class Cli
 
     # Exit the app with message
     def exit
-        message = "
-        ****************************\n
-        Thank you for using our app!\n
-        ~ ~ ~  See you later.  ~ ~ ~\n
-        ****************************\n".colorize(:light_magenta)
+        message = 
+         "****************************
+        \nThank you for using our app!
+        \n~ ~ ~  See you later.  ~ ~ ~
+        \n****************************\n".colorize(:light_magenta)
         abort(message)
     end
 end
