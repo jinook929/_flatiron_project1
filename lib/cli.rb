@@ -1,18 +1,18 @@
 class Cli
     # Welcomes a user and invoke start method
     def welcome
-        puts "\nWelcome to Country Info CLI App!"
+        puts "\nWelcome to Country Info CLI App!\n".colorize(:light_red)
         self.start
     end
 
     # Show alphabet list and check if user input is valid
     def start
-        puts "\n1. A-B\s\s||\s\s2. C-D\s\s||\s\s3. E-G\s\s||\s\s4. H-K\s\s||\s\s5. L-M\s\s||\s\s6. N-R\s\s||\s\s7. S-T\s\s||\s\s8. U-Z".colorize(:light_green)
+        puts "||  1. A-B  ||  2. C-D  ||  3. E-G  ||  4. H-K  ||\n||  5. L-M  ||  6. N-R  ||  7. S-T  ||  8. U-Z  ||".colorize(:light_green)
         print "What is the first letter of the country that you are looking for?\s"
         input = gets.strip
         # Check if user input is valid
         if !input.match(/^[1-8A-Za-z]$/) # If not valid, ask again
-            puts "\nPlease see the alphabet lists and enter a number between 1 and 8 (or a single letter)."
+            puts "\nPlease see the alphabet list and enter a number between 1 and 8 (or a single letter).".colorize(:light_black)
             self.start 
         else                             # If valid, print countries list for the alphabet range
             self.print_countries(input)
@@ -67,7 +67,12 @@ class Cli
         # Prepare starting index for the selected range
         starting_index = countries_info.index(countries[0])
         # Print countries list of the range
-        countries.each.with_index {|country, i| print "#{i+1}. #{country[:name]} | ".colorize(:light_cyan)}
+        countries.each.with_index {|country, i| 
+            if (i + 1) % 5 == 1
+                puts ""
+            end
+            print "#{i+1}. #{country[:name]} ".ljust(25, " ").colorize(:light_cyan)
+        }
         print "\n\nEnter the number of your choice => "
         # Receive user input and convert the index in context of all countries
         country_index = gets.strip.to_i - 1 + starting_index
@@ -148,6 +153,11 @@ class Cli
 
     # Exit the app with message
     def exit
-        abort("\nThank you for using our app!\n~ ~ ~  See you later.  ~ ~ ~\n".colorize(:light_magenta))
+        message = "
+        \n****************************
+        \nThank you for using our app!
+        \n~ ~ ~  See you later.  ~ ~ ~
+        \n****************************\n".colorize(:light_magenta)
+        abort(message)
     end
 end

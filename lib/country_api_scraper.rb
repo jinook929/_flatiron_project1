@@ -46,7 +46,7 @@ class CountryApiScraper
             hash[:language] = "N/A"
             hash[:population] = "N/A"
             hash[:currency] = "N/A"
-            hash[:background] = "'More Info' link below will not work..."
+            hash[:background] = "'More Info' link below may not work..."
         end
         # Return detailed country info hash
         hash
