@@ -122,8 +122,10 @@ class Cli
                 # Instantiate Weather object
                 country_weather = Weather.new(weather_hash)
                 # Print weather info
-                puts "Temperature =  #{country_weather.degree} (#{country_weather.feels_like}) / Wind: #{country_weather.wind}".colorize(:yellow)
-                puts "Daily Low & High =  #{country_weather.low_high} / #{country_weather.description}".colorize(:yellow)
+                print "Temperature =  #{country_weather.degree} (#{country_weather.feels_like})".ljust(45, " ").colorize(:yellow)
+                puts "/   Wind = #{country_weather.wind}".colorize(:yellow)
+                print "Daily Low & High =  #{country_weather.low_high}".ljust(45, " ").colorize(:yellow)
+                puts "/   #{country_weather.description}".colorize(:yellow)
             else                                  # When no
                 # Ask if user want to continue the app
                 self.another_country?
