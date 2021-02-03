@@ -30,7 +30,7 @@ class CountryApiScraper
         # Request error check with a web page to scrape
         begin  # when the web page works
             # Get the country page info based on code argument
-            doc = Nokogiri::HTML(open("http://www.geognos.com/geo/en/cc/#{code}.html"))
+            doc = Nokogiri::HTML(URI.open("http://www.geognos.com/geo/en/cc/#{code}.html"))
             # Fill in the returning hash
             hash[:location] = doc.css("#Location p").text.chop
             if hash[:capital] == "N/A"

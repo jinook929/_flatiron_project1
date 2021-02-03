@@ -3,7 +3,7 @@ class WeatherScraper
     # Get weather info from latitude and longitude
     def self.get_weather_info(lat, long)
         # Scrape data from web page
-        doc = Nokogiri::HTML(open("https://darksky.net/forecast/#{lat},#{long}/us12/en"))
+        doc = Nokogiri::HTML(URI.open("https://darksky.net/forecast/#{lat},#{long}/us12/en"))
         # Return weather info hash
         Hash.new.tap {|hash|
             hash[:degree] = doc.css("#title .desc > .swap").text.split(/[[:space:]]/)[0].concat("F")
