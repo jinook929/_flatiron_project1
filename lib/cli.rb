@@ -86,4 +86,20 @@ class Cli
             print_countries(input)
         end
     end
+
+    # Print selected country info
+    def print_country(country_code)
+        # Get detailed country info via scraping
+        country_hash = CountryApiScraper.get_country_info(country_code)
+        # Check if the instance exists and assign it or a new instance to a variable
+        country = Country.all.find {|country| country.code == country_code} || Country.new(country_hash)
+        # Print country info to user
+        puts "\n===   #{country.name}   ===".colorize(:red).underline.bold
+        puts "\n- Capital City: #{country.capital}"
+        puts "- Language: #{country.language}"
+        puts "- Population: #{country.population}"
+        puts "- Currency: #{country.currency}"
+        puts "- Background: \n#{country.background}".colorize(:light_blue)
+        puts "\s=> More Info: #{country.url}".colorize(:green)
+    end
 end
