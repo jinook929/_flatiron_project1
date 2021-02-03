@@ -54,7 +54,7 @@ class CountryApiScraper
 
     # Finalize creating country details hash based on given country code
     def self.get_country_info(code)
-        country_basics = self.get_counties_info.select { |obj| obj[:code] == code }[0]
+        country_basics = self.get_countries_info.select { |obj| obj[:code] == code }[0]
         country_basics.merge(self.get_country_details(code))
     end
 end

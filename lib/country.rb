@@ -15,6 +15,6 @@ class Country
             # Set value for created variable
             self.send("#{k}=", v)
         }
-        self.all.push(self)
+        @@all.push(self)
     end
 end

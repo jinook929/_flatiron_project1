@@ -18,7 +18,7 @@ class Cli
             self.print_countries(input)
         end
         # When finished with one cycle, ask user to continue or to exit
-        self.another_country     
+        self.another_country?    
     end
 
     # Show countries list of the selected alphabet range
@@ -60,7 +60,7 @@ class Cli
     # then check if the input is valid and collect the basic data for the country
     def country_selection(input, pattern)
         # Get countries basic info via API
-        countries_info = CountryApiScraper.get_counties_info
+        countries_info = CountryApiScraper.get_countries_info
         puts "\nWhich country do you want to know about?"
         # Choose the matching countries info
         countries = countries_info.select {|info| info[:name].match(pattern)}
@@ -134,7 +134,7 @@ class Cli
         # Check if input is valid
         if !another.match(/(^[yn]$|^yes$|^no$)/i) # When invalid
             # Ask again
-            another_country
+            another_country?
         else                                      # When valid
             if another.match(/(^[y]$|^yes$)/i)      # When yes
                 # Invoke start method
