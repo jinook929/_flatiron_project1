@@ -28,28 +28,28 @@ class Cli
             # Create regex pattern for selected alphabet range
             pattern = /^[AaBb]/
             # Collect data for selected alphabet range
-            country_selection(input, pattern)
+            self.country_selection(input, pattern)
         when /^[2CcDd]/ # When c-d
             pattern = /^[CcDd]/
-            country_selection(input, pattern)
+            self.country_selection(input, pattern)
         when /^[3E-Ge-g]/ # When e-g
             pattern = /^[E-Ge-g]/
-            country_selection(input, pattern)
+            self.country_selection(input, pattern)
         when /^[4H-Kh-k]/ # When h-k
             pattern = /^[H-Kh-k]/
-            country_selection(input, pattern)
+            self.country_selection(input, pattern)
         when /^[5LlMm]/ # When l-m
             pattern = /^[LlMm]/
-            country_selection(input, pattern)
+            self.country_selection(input, pattern)
         when /^[6N-Rn-r]/ # When n-r
             pattern = /^[N-Rn-r]/
-            country_selection(input, pattern)
+            self.country_selection(input, pattern)
         when /^[7SsTt]/ # When s-t
             pattern = /^[SsTt]/
-            country_selection(input, pattern)
+            self.country_selection(input, pattern)
         when /^[8U-Zu-z]/ # when u-z
             pattern = /^[U-Zu-z]/
-            country_selection(input, pattern)
+            self.country_selection(input, pattern)
         else # When user input is not valid
             # Invoke start method again
             self.start
@@ -78,12 +78,12 @@ class Cli
             country_lat = countries_info[country_index][:lat]
             country_long = countries_info[country_index][:long]
             # Print country info by invoking print_country method
-            print_country(country_code)
+            self.print_country(country_code)
             # Ask optional question on weather info by invoking ask_weahter method
-            ask_weather(country_lat, country_long)
+            self.ask_weather(country_lat, country_long)
         else                                                                      # When not valid
             # Show countries list in the range and ask user again for the selection
-            print_countries(input)
+            self.print_countries(input)
         end
     end
 
@@ -125,4 +125,26 @@ class Cli
             end
         end            
     end
+
+    # Ask user for the app to be continued
+    def another_country?
+        print "\nDo you want to know about another country? (Y/N)\s"
+        # Get user input
+        another = gets.strip
+        # Check if input is valid
+        if !another.match(/(^[yn]$|^yes$|^no$)/i) # When invalid
+            # Ask again
+            another_country
+        else                                      # When valid
+            if another.match(/(^[y]$|^yes$)/i)      # When yes
+                # Invoke start method
+                self.start
+            else                                    # When no
+                # Invoke exit method
+                self.exit
+            end
+        end   
+    end
+
+    
 end
