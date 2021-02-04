@@ -9,8 +9,8 @@ by Jinook Jung
 
 or
 
-1. Visit my [Github repository](https://github.com/jinook929/_flatiron_project1).
-2. Clone the code to your local directory. [`git clone https://github.com/jinook929/_flatiron_project1.git`]
+1. Visit my [Github repository](https://github.com/jinook929/_flatiron_project1) and clone the code to your local directory. [`git clone https://github.com/jinook929/_flatiron_project1.git`]
+2. Enter into the *_flatiron_project1* fold: `cd _flatiron_project1`.
 3. Execute `bundle install`.
 4. Then, run `ruby bin/run`.
 
