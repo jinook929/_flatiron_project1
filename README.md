@@ -1,6 +1,22 @@
-# How to use Country Info CLI App
+# Country Info CLI App
+by Jinook Jung
+* * * * * * * * * *
+## To Use the App
+1. Visit my [repl.it](https://repl.it/@JinookJung/Country-Info-CLI-App). 
+2. Click the Green Play Button.
+3. Execute `gem install --user-install httparty colorize` (copy here, and righ-click paste in repl.it). [This one takes some time]
+4. Then, run `ruby bin/run`.
 
-## Welcome screen (Alphabetical Range List)
+or
+
+1. Visit my [Github repository](https://github.com/jinook929/_flatiron_project1).
+2. Clone the code to your local directory. [`git clone https://github.com/jinook929/_flatiron_project1.git`]
+3. Execute `bundle install`.
+4. Then, run `ruby bin/run`.
+
+## How to use Country Info CLI App
+
+### Welcome screen (Alphabetical Range List)
 **Welcome to Country Info CLI App!**
 
 ||  1. A-B  ||  2. C-D  ||  3. E-G  ||  4. H-K  ||\
@@ -14,17 +30,17 @@
 ||  5. L-M  ||  6. N-R  ||  7. S-T  ||  8. U-Z  ||\
 **What is the first letter of the country that you are looking for?**
 
-## Country List Screen Sample
+### Country List Screen Sample
 **Which country do you want to know about?**
 
-|1. Uganda                2. Ukraine               3. United Arab Emirates  4. United Kingdom        5. United States\
-| 6. Uruguay               7. Uzbekistan            8. Vanuatu               9. Venezuela             10. Vietnam\
+|  1. Uganda                2. Ukraine               3. United Arab Emirates  4. United Kingdom        5. United States\
+|  6. Uruguay               7. Uzbekistan            8. Vanuatu               9. Venezuela             10. Vietnam\
 | 11.  Virgin Islands      12. Wallis and Futuna    13. Western Sahara       14. Yemen                15. Zambia\
 | 16.  Zimbabwe
 
 **Enter the number of your choice =>**
 
-## Country Info Screen Sample
+### Country Info Screen Sample
 ===   United States   ===
 
 - Capital City: Washington, DC
@@ -38,7 +54,7 @@ Britain's American colonies broke with the mother country in 1776 and were recog
 **Do you want to know the currunt weather of this country? [Capital Area] (Y/N)**\
 => *If you choose "Y" or "YES" (case-insensitive), you will see the weather info screen for the capital area of the country.*
 
-## Weather Info Screen Sample
+### Weather Info Screen Sample
 Do you want to know the currunt weather of this country? [Capital Area] (Y/N) **yes**\
 Temperature =  37˚F (Feels Like: 30˚F) / Wind = 11 mph\
 Daily Low & High =  Low: 29˚F - High: 42˚F / Clear throughout the day
@@ -46,7 +62,7 @@ Daily Low & High =  Low: 29˚F - High: 42˚F / Clear throughout the day
 **Do you want to know about another country? (Y/N)**\
 => *If you choose "Y" or "YES" (case-insensitive), the app will lead you to the beginning (the alphabet range list).*
 
-## Ending Screen
+### Ending Screen
 ****************************
 
 Thank you for using our app!
@@ -55,21 +71,21 @@ Thank you for using our app!
 
 ****************************
 
-# Data Sources and Structure
+## Data Sources and Structure
 
-## Country Info & Weather Info (by sources)
+### Country Info & Weather Info (by sources)
 - [World Countries API](http://www.geognos.com/geo/en/world-countries-API.html)
 - Scraping of Country Details Web Pages (e.g. [Korea](http://www.geognos.com/geo/en/cc/kr.html))
 - Scraping of Weather Info Website ([Dark Sky](https://darksky.net/forecast/37,127.3/) [with latitude & longitude info of the country])
 
-## Object Keys (sorted by classes & sources)
+### Object Keys (sorted by classes & sources)
 - **Country** (*basics*) [Country API] :name, :capital, :url, :lat, :long
 - **Country** (*details*) [Country SCRAPING] :location, :language, :population, :currency,:background(*, and sometimes* :capital)
 - **Weather** [Weather SCRAPIING] :temperature, :feels, :wind, :summary
 
-# References
+## References
 
-## Module Sections
+### Module Sections
 - getting-remote-data-working-with-apis 
 - oo-student-scraper 
 - scraping-flatiron-code-along
@@ -77,7 +93,7 @@ Thank you for using our app!
 - weather-app
 - worlds-best-restaurants-cli-gem 
 
-## Web Resources
+### Web Resources
 - Colorize [Docs](https://github.com/fazibear/colorize)
 - HTTParty [Docs](https://github.com/jnunemaker/httparty/tree/master/docs)
 - Nokogiri [Docs](label-Parsing+and+Querying)
