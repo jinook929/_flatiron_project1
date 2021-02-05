@@ -7,4 +7,4 @@ require "json"
 require "colorize"
 
 # Require all .rb files in lib folder
-Dir['./lib/*.rb'].each {|file| require_relative ".#{file}"}
+Dir["./lib/*.rb"].each { |file| require_relative ".#{file}" }

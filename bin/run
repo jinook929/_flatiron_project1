@@ -1,8 +1,7 @@
-# Set shebang line for ruby
 #!/usr/bin/env ruby
 
 # Require environment file
-require_relative('../config/environment')
+require_relative("../config/environment")
 
 # Instanctiate Cli class and execute the app by invoking welcome method
 Cli.new.welcome

@@ -97,3 +97,15 @@ Thank you for using our app!
 - Colorize [Docs](https://github.com/fazibear/colorize)
 - HTTParty [Docs](https://github.com/jnunemaker/httparty/tree/master/docs)
 - Nokogiri [Docs](label-Parsing+and+Querying)
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/jinook929/_flatiron_project1. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+
+## Contributors
+- Jinook Jung <jinook929@gmail.com>
+
+## License & Copyright
+© Jinook Jung
+
+The app is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
