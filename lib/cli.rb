@@ -158,11 +158,17 @@ class Cli
 
   # Exit the app with message
   def exit
-    message =
-      "****************************
-        \nThank you for using our app!
-        \n~ ~ ~  See you later.  ~ ~ ~
-        \n****************************\n".colorize(:light_magenta)
-    abort(message)
+    message = <<~HEREDOC
+    
+      * * * * * * * * * * * * * * *
+
+      Thank you for using our app !
+
+      ~ ~ ~   See you later   ~ ~ ~
+
+      * * * * * * * * * * * * * * *
+      
+      HEREDOC
+    abort(message.colorize(:light_magenta))
   end
 end

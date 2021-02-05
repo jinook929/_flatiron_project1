@@ -3,8 +3,8 @@ by Jinook Jung
 * * * * * * * * * *
 ## To Use the App
 1. Visit my [repl.it](https://repl.it/@JinookJung/Country-Info-CLI-App). 
-2. Click the Green Play Button.
-3. Execute `gem install --user-install httparty colorize` (copy here, and righ-click paste in repl.it). [This one takes some time]
+2. Click the Green Play Button. (Ignore errors when starting.)
+3. Execute `gem install --user-install httparty colorize`. [This one could take some time]
 4. Then, run `ruby bin/run`.
 
 or
