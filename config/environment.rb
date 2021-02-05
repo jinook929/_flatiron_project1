@@ -1,5 +1,8 @@
 # Require gems needed
 require "pry"
+require 'dotenv'
+Dotenv.load('./.env')
+
 require "httparty"
 require "nokogiri"
 require "open-uri"

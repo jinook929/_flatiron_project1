@@ -71,7 +71,7 @@ class Cli
       if (i + 1) % 5 == 1
         puts ""
       end
-      print "#{i + 1}. #{country[:name]} ".ljust(25, " ").colorize(:light_cyan)
+      print "#{i + 1}. #{country[:name]} ".slice(0, 23).ljust(25, " ").colorize(:light_cyan)
     }
     print "\n\nEnter the number of your choice => "
     # Receive user input and convert the index in context of all countries
