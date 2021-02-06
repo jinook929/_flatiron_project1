@@ -110,7 +110,7 @@ class Cli
 
   # Ask user if weather info needed
   def ask_weather(lat, long)
-    print "\nDo you want to know the currunt weather of this country? [around capital area] (Y/N)\s"
+    print "\nDo you want to know the currunt weather of this country? [near capital area] (Y/N)\s"
     # Get user input and check if it is valid
     input = gets.strip
     if !input.match(/(^[yn]$|^yes$|^no$)/i) # When invalid
@@ -118,11 +118,12 @@ class Cli
     else # When valid
       if input.match(/(^[y]$|^yes$)/i) # When yes
         # Get weather info via scraping
-        weather_hash = WeatherScraper.get_weather_info(lat, long)
+        weather_hash = WeatherApiScraper.get_weather_info(lat, long)
         # Instantiate Weather object
         country_weather = Weather.new(weather_hash)
         # Print weather info
-        ### trying area name: puts "[   AREA : #{country_weather.area} (around the capital)   ]".colorize(:light_green)
+        ### trying area name: 
+        puts "[   AREA : #{country_weather.area} (around the capital)   ]".colorize(:light_green)
         print "Temperature =  #{country_weather.degree} (#{country_weather.feels_like})".ljust(45, " ").colorize(:yellow)
         puts "/   Wind = #{country_weather.wind}".colorize(:yellow)
         print "Daily Low & High =  #{country_weather.low_high}".ljust(45, " ").colorize(:yellow)

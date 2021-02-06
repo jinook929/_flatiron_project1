@@ -2,17 +2,22 @@
 by Jinook Jung
 * * * * * * * * * *
 ## To Use the App
+### via repl.it
 1. Visit my [repl.it](https://repl.it/@JinookJung/Country-Info-CLI-App). 
 2. Click the Green Play Button. (Ignore errors when starting.)
 3. Execute `gem install --user-install httparty colorize`. [This one could take some time]
 4. Then, run `ruby bin/run`.
 
-or
+### via Github Repo (For this, you need your Google Geocoding API key.)
 
 1. Visit my [Github repository](https://github.com/jinook929/_flatiron_project1) and clone the code to your local directory. [`git clone https://github.com/jinook929/_flatiron_project1.git`]
 2. Enter into the *_flatiron_project1* fold: `cd _flatiron_project1`.
-3. Execute `bundle install`.
-4. Then, run `ruby bin/run`.
+3. Open weather_scraper.rb file and change line 8" as below:
+api_key = ENV["API_KEY"] api_key => api_key = **Your Google Geocoding API key**
+4. Execute `bundle install`.
+5. Then, run `ruby bin/run`.
+
+=> This Github version will show you one more info on the weather than repl.it one. [Area Name]
 
 ## How to use Country Info CLI App
 
