@@ -12,8 +12,8 @@ by Jinook Jung
 
 1. Visit my [Github repository](https://github.com/jinook929/_flatiron_project1) and clone the code to your local directory. [`git clone https://github.com/jinook929/_flatiron_project1.git`]
 2. Enter into the *_flatiron_project1* fold: `cd _flatiron_project1`.
-3. Open `weather_api_scraper.rb` file in `lib` folder and change line 8 as below:
-api_key = ENV["API_KEY"] api_key => api_key = "**Your Google Geocoding API key**" (Don't forget the quotation marks!!!)
+3. Open `weather_api_scraper.rb` file in `lib` folder and change line 8 as below:\
+*api_key* = ENV["API_KEY"] => *api_key* = "**Your Google Geocoding API key**" (Don't forget the quotation marks!!!)
 4. Execute `bundle install`.
 5. Then, run `ruby bin/run`.
 
