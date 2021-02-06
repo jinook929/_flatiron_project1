@@ -1,5 +1,5 @@
 # Require gems needed
-require "pry"
+# require "pry"
 require 'dotenv'
 Dotenv.load('./.env')
 
