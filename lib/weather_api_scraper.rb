@@ -4,14 +4,17 @@ class WeatherApiScraper
   def self.get_weather_info(lat, long)
     # Scrape data from web page
     doc = Nokogiri::HTML(URI.open("https://darksky.net/forecast/#{lat},#{long}/us12/en"))
-    # Get area info via google geocode api 
+    # Improve weather area info by using Google Geocode API
     api_key = ENV["API_KEY"]
-    area = HTTParty.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=#{lat},#{long}&sensor=true&key=#{api_key}")["plus_code"]["compound_code"].split(/[[:space:]]/)
-    area.shift
-    area = area.join(" ")
+    begin
+      area = HTTParty.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=#{lat},#{long}&sensor=true&key=#{api_key}")["plus_code"]["compound_code"].split(/[[:space:]]/)
+      area.shift
+      area = area.join(" ")
+    rescue
+      area = "N/A"
+    end
     # Return weather info hash
     Hash.new.tap { |hash|
-      ### trying area name: 
       hash[:area] = area
       hash[:degree] = doc.css("#title .desc > .swap").text.split(/[[:space:]]/)[0].concat("F")
       hash[:wind] = "#{doc.css(".wind .wind__speed__value").text} mph"
