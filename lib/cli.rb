@@ -7,16 +7,19 @@ class Cli
 
   # Show alphabet list and check if user input is valid
   def start
-    puts "||  1. A-B  ||  2. C-D  ||  3. E-G  ||  4. H-K  ||\n||  5. L-M  ||  6. N-R  ||  7. S-T  ||  8. U-Z  ||".colorize(:light_green)
-    print "What is the first letter of the country that you are looking for?\s"
-    input = gets.strip
-    # Check if user input is valid
-    if !input.match(/^[1-8A-Za-z]$/) # If not valid, ask again
-      puts "\nPlease see the alphabet list and enter a number between 1 and 8 (or a single letter).".colorize(:light_black)
-      self.start
-    else # If valid, print countries list for the alphabet range
-      self.print_countries(input)
+    input = ""
+    while !input.match(/^[1-8A-Za-z]$/) # While not valid, ask again
+      puts "||  1. A-B  ||  2. C-D  ||  3. E-G  ||  4. H-K  ||\n||  5. L-M  ||  6. N-R  ||  7. S-T  ||  8. U-Z  ||".colorize(:light_green)
+      print "What is the first letter of the country that you are looking for?\s"
+      input = gets.strip
+      if !input.match(/^[1-8A-Za-z]$/)
+        puts "\nPlease see the alphabet list and enter a number between 1 and 8 (or a single letter).".colorize(:light_black)
+      end
     end
+    
+    # Print countries list for the alphabet range
+    self.print_countries(input)
+
     # When finished with one cycle, ask user to continue or to exit
     self.another_country?
   end
