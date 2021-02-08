@@ -92,7 +92,7 @@ class Cli
     country_index = user_input.to_i - 1 + starting_index
 
     # Check on the validity of user input (within index range with no alphabet letters)
-    if (starting_index..(countries.count - 1 + starting_index)).include?(country_index) && user_input.match(/^\d+?$/) # When valid
+    if (starting_index..(countries.count - 1 + starting_index)).include?(country_index) && user_input.match(/^\d+$/) # When valid
       # Collect data for instance of the selected country
       country_code = countries_info[country_index][:code]
       country_lat = countries_info[country_index][:lat]
