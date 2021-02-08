@@ -67,6 +67,7 @@ class Cli
     puts "\nWhich country do you want to know about?"
     # Choose the matching countries info
     countries = countries_info.select { |info| info[:name].match(pattern) }
+    country_names = countries.collect {|country| country[:name].downcase }
     # Prepare starting index for the selected range
     starting_index = countries_info.index(countries[0])
     # Print countries list of the range
@@ -78,9 +79,14 @@ class Cli
     }
     print "\n\nEnter the number of your choice => "
     # Receive user input and convert the index in context of all countries
-    country_index = gets.strip.to_i - 1 + starting_index
+    user_selection = gets.strip
+    # Check if user_selection matches any country name of the range
+    if country_names.include?(user_selection.downcase)
+      user_selection = (country_names.index(user_selection) + 1).to_s
+    end
+    country_index = user_selection.to_i - 1 + starting_index
     # Check on the validity of user input
-    if (starting_index..countries.count - 1 + starting_index).include?(country_index) # When valid
+    if (starting_index..countries.count - 1 + starting_index).include?(country_index) && user_selection.match(/^\d\d?$/)# When valid
       # Collect data for instance of the selected country
       country_code = countries_info[country_index][:code]
       country_lat = countries_info[country_index][:lat]
