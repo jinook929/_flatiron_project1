@@ -79,14 +79,14 @@ class Cli
     }
     print "\n\nEnter the number of your choice => "
     # Receive user input and convert the index in context of all countries
-    user_selection = gets.strip
-    # Check if user_selection matches any country name of the range
-    if country_names.include?(user_selection.downcase)
-      user_selection = (country_names.index(user_selection) + 1).to_s
+    user_input = gets.strip
+    # Check if user_input matches any country name of the range
+    if country_names.include?(user_input.downcase)
+      user_input = (country_names.index(user_input) + 1).to_s
     end
-    country_index = user_selection.to_i - 1 + starting_index
+    country_index = user_input.to_i - 1 + starting_index
     # Check on the validity of user input
-    if (starting_index..countries.count - 1 + starting_index).include?(country_index) && user_selection.match(/^\d\d?$/)# When valid
+    if (starting_index..countries.count - 1 + starting_index).include?(country_index) && user_input.match(/^\d\d?$/)# When valid
       # Collect data for instance of the selected country
       country_code = countries_info[country_index][:code]
       country_lat = countries_info[country_index][:lat]
