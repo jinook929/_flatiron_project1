@@ -121,6 +121,7 @@ class Cli
     # Print country info to user
     puts "\n===   #{country.name}   ===".colorize(:red).underline.bold
     puts "\n- Capital City: #{country.capital}"
+    puts "- Location: #{country.location}"
     puts "- Language: #{country.language}"
     puts "- Population: #{country.population}"
     puts "- Currency: #{country.currency}"
