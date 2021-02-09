@@ -2,6 +2,7 @@
 class Country
   # Set class variable to collect the instances
   @@all = []
+  
   # Get @@all value
   def self.all
     @@all
@@ -16,5 +17,10 @@ class Country
       self.send("#{k}=", v)
     }
     self.class.all.push(self)
+  end
+
+  # Either find or create Country instance
+  def self.find_or_create_by_code(code)
+    self.all.find {|country| country.code == code} || Country.new(CountryApiScraper.get_country_info(code))
   end
 end

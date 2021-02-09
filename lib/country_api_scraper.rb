@@ -9,8 +9,8 @@ class CountryApiScraper
     # Return countries basic info
     doc.collect { |key, value|
       Hash.new.tap { |hash|
-        hash[:name] = value["Name"]
         hash[:code] = key.downcase
+        hash[:name] = value["Name"]
         hash[:url] = value["CountryInfo"]
         if value["Capital"] # when API has capital info
           hash[:capital] = value["Capital"]["Name"]

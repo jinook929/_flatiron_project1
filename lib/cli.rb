@@ -112,11 +112,8 @@ class Cli
 
   # Print selected country info
   def print_country(country_code)
-    # Get detailed country info via scraping
-    country_hash = CountryApiScraper.get_country_info(country_code)
-
-    # Check if the instance exists and assign it or a new instance to a variable
-    country = Country.all.find { |country| country.code == country_code } || Country.new(country_hash)
+    # Either create or find the selected country's info
+    country = Country.find_or_create_by_code(country_code) 
 
     # Print country info to user
     puts "\n===   #{country.name}   ===".colorize(:red).underline.bold
