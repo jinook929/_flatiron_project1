@@ -2,6 +2,11 @@ class Cli
   # Welcomes a user and invoke start method
   def welcome
     puts "\nWelcome to Country Info CLI App!\n".colorize(:light_red)
+
+    # Get countries basic info via API and store it as instance variable
+    @countries_info = CountryApiScraper.get_countries_info
+
+    # Start asking user
     self.start
   end
 
@@ -46,7 +51,7 @@ class Cli
     when /^[5lm]/i # When l-m
       pattern = /^[lm]/i
       self.country_selection(input, pattern)
-    when /^[6N-Rn-r]/i # When n-r
+    when /^[6n-r]/i # When n-r
       pattern = /^[n-r]/i
       self.country_selection(input, pattern)
     when /^[7st]/i # When s-t
@@ -64,11 +69,8 @@ class Cli
   # Print countries of selected range and receive user input for specific country;
   # then check if the input is valid and collect the basic data for the country
   def country_selection(input, pattern)
-    # Get countries basic info via API
-    countries_info = CountryApiScraper.get_countries_info
-
     # Collect the matching countries info
-    countries = countries_info.select { |info| info[:name].match(pattern) }
+    countries = @countries_info.select { |info| info[:name].match(pattern) }
     country_names = countries.collect { |country| country[:name].downcase }
     
     # Print countries list of the range and ask user input
@@ -88,15 +90,15 @@ class Cli
     end
 
     # Prepare starting index for the selected range and add it to user_input
-    starting_index = countries_info.index(countries[0])
+    starting_index = @countries_info.index(countries[0])
     country_index = user_input.to_i - 1 + starting_index
 
     # Check on the validity of user input (within index range with no alphabet letters)
     if (starting_index..(countries.count - 1 + starting_index)).include?(country_index) && user_input.match(/^\d+$/) # When valid
       # Collect data for instance of the selected country
-      country_code = countries_info[country_index][:code]
-      country_lat = countries_info[country_index][:lat]
-      country_long = countries_info[country_index][:long]
+      country_code = @countries_info[country_index][:code]
+      country_lat = @countries_info[country_index][:lat]
+      country_long = @countries_info[country_index][:long]
 
       # Print country info by invoking print_country method
       self.print_country(country_code)
