@@ -90,7 +90,7 @@ Thank you for using our app!
 - **Country** (*basics*) [Country API] :name, :capital, :url, :lat, :long
 - **Country** (*details*) [Country SCRAPING] :location, :language, :population, :currency,:background(*, and sometimes* :capital)
 - **Weather** (*area*) [Google Geocoding API] :area
-- **Weather** (*weather related*) [Weather SCRAPIING] :temperature, :feels, :wind, :summary
+- **Weather** (*weather related*) [Weather SCRAPING] :temperature, :feels, :wind, :summary
 
 ## References
 
